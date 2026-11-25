@@ -1,5 +1,6 @@
 package controlegastos.servico;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import controlegastos.excecoes.CategoriaNaoDefinidaException;
@@ -116,5 +117,49 @@ public class Conta implements Registravel {
 		antiga.setData(nova.getData());
 		antiga.setCategoria(nova.getCategoria());
 		saldo = saldoFuturo;
+	}
+
+	@Override
+	public void extrato() {
+		imprimirExtrato(null, null, null);
+	}
+
+	@Override
+	public void extrato(Categoria categoria) {
+		imprimirExtrato(categoria, null, null);
+	}
+
+	@Override
+	public void extrato(LocalDate inicio, LocalDate fim) {
+		imprimirExtrato(null, inicio, fim);
+	}
+
+	private void imprimirExtrato(Categoria categoria, LocalDate inicio, LocalDate fim) {
+		System.out.println("==================== EXTRATO - " + titular.getNome() + " ====================");
+
+		double acumulado = 0;
+
+		for (Transacao t : transacoes) {
+			acumulado = acumulado + t.efeitoNoSaldo();
+
+			boolean mostrar = true;
+			if (categoria != null && t.getCategoria() != categoria) {
+				mostrar = false;
+			}
+			if (inicio != null && t.getData().isBefore(inicio)) {
+				mostrar = false;
+			}
+			if (fim != null && t.getData().isAfter(fim)) {
+				mostrar = false;
+			}
+
+			if (mostrar) {
+				System.out.printf("%d  %-8s %-25s %-16s %10.2f %10.2f%n", t.getIdentificador1(), t.getTipo(),
+						t.getNome(), t.getCategoria().getNome(), t.efeitoNoSaldo(), acumulado);
+			}
+		}
+
+		System.out.println("---------------------------------------------------------------");
+		System.out.printf("SALDO FINAL: R$ %.2f%n", saldo);
 	}
 }
