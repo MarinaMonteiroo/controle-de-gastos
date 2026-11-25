@@ -8,4 +8,7 @@ public interface Registravel {
 
     double getSaldo();
 
+    void atualizar(int identificador, Transacao nova) throws ControleGastosException;
+
+    void remover(int identificador) throws ControleGastosException;
 }
