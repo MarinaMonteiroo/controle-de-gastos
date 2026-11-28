@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import controlegastos.modelo.Transacao;
 
 
-class Repositorio <T extends Transacao> { // (polimorfismo paramétrico)
+class Repositorio <T extends Transacao> { 
 
     private ArrayList<T> itens;
 

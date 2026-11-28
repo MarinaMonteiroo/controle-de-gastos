@@ -21,5 +21,8 @@ public interface Registravel {
 
     void extrato(LocalDate inicio, LocalDate fim);
     
+    void extrato(Categoria categoria, LocalDate inicio, LocalDate fim);
+    
+  
     
 }

@@ -1,16 +1,14 @@
 package controlegastos.modelo;
 
 public class Categoria {
-	// todas as categorias de receita e despesa estão aqui
-	 
-	//receita
+	
+	//Receita
 	public static final Categoria SALARIOS = new Categoria("Salários", true);
     public static final Categoria HONORARIOS = new Categoria("Honorários", true);
     public static final Categoria RENDIMENTOS = new Categoria("Rendimentos", true);
     public static final Categoria OUTRAS_RECEITAS = new Categoria("Outras receitas", true);
-
     
-     /// despesa
+     /// Despesas
     public static final Categoria MORADIA = new Categoria("Moradia", false);
     public static final Categoria LUZ = new Categoria("Luz", false);
     public static final Categoria AGUA = new Categoria("Água", false);
@@ -23,7 +21,7 @@ public class Categoria {
     public static final Categoria OUTRAS_DESPESAS = new Categoria("Outras despesas", false);
 
     private String nome;
-    private boolean receita;   // true significa que é categoria de receita
+    private boolean receita;  
 
     public Categoria(String nome, boolean receita) {
         this.nome = nome;

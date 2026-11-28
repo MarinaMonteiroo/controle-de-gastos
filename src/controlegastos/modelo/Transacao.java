@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Transacao { 
     private static int proximoId = 1;  
 
-    private int identificador;                     // cada transação tem o seu
+    private int identificador;                     
     private String nome;
     private String descricao;
     protected double valor;

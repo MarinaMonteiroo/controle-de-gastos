@@ -6,11 +6,15 @@ public class Titular {
 	private String cpf;
 
 public Titular (String nome, String cpf) {
-	this.nome = nome; // atributo da classe , e o nome é o dado
+	this.nome = nome; 
 	this.cpf =  cpf;
 
 }
-// metodos 
+ public Titular(String nome) {
+	 this.nome  = nome;
+	 this.cpf = "Não informado";
+	 }
+ 
 	public String getNome() {
 		return nome;
 	}

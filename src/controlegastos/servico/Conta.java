@@ -31,7 +31,7 @@ public class Conta implements Registravel {
 
 	@Override
 	public void inserir(Transacao t) throws ControleGastosException {
-		validar(t); // confere nome, categoria e valor
+		validar(t); 
 
 		double saldoFuturo = saldo + t.efeitoNoSaldo();
 
@@ -105,8 +105,12 @@ public class Conta implements Registravel {
 	@Override
 	public void extrato(LocalDate inicio, LocalDate fim) {
 		imprimirExtrato(null, inicio, fim);
+		
 	}
-
+    @Override
+    public void extrato(Categoria categoria, LocalDate inicio, LocalDate fim) {
+        imprimirExtrato(categoria, inicio, fim);
+    }
 
 
 	private Transacao buscar(int identificador) throws ControleGastosException {
